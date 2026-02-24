@@ -1,0 +1,15 @@
+# Sensitive credentials - DO NOT COMMIT
+credentials.json
+token.pickle
+*.pickle
+
+# Logs
+Logs/
+
+# Obsidian
+.obsidian/
+
+# Python
+__pycache__/
+*.pyc
+.env

@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "3a6147f4598b982a",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9b53c7954b302a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b3cfa556d5ea3fe",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Plans/PLAN_20260225_035721_test1234.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "PLAN_20260225_035721_test1234"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a55084b5a0be87c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "218a4447be0a3cc1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eb99ea9c6e4aab80",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5743c85944de468f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "939f5c14e057b816",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "13b9fac82835c10d",
+    "type": "split",
+    "children": [
+      {
+        "id": "fb1c7a8538fef409",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "72b625086db9f59d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Plans/PLAN_20260225_035721_test1234.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for PLAN_20260225_035721_test1234"
+            }
+          },
+          {
+            "id": "5f871eedbd0fc2f8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Plans/PLAN_20260225_035721_test1234.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from PLAN_20260225_035721_test1234"
+            }
+          },
+          {
+            "id": "a48d140613648932",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6c26f6a9f3b1aa72",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "9a94935a7a7995a7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Plans/PLAN_20260225_035721_test1234.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of PLAN_20260225_035721_test1234"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "4b3cfa556d5ea3fe",
+  "lastOpenFiles": [
+    "Plans/PLAN_20260224_222707_19c8e4b8.md",
+    "Plans/PLAN_20260224_222706_19c90788.md",
+    "Plans/PLAN_20260224_222706_19c906b1.md",
+    "Plans/PLAN_20260224_222705_19c90793.md",
+    "Plans/PLAN_20260224_222705_19c90789.md",
+    "Plans/PLAN_20260224_222704_19c90a6d.md",
+    "Plans/PLAN_20260224_221640_19c90a6d.md",
+    "Needs_Action/EMAIL_20260224_221640_19c90a6d.md",
+    "Needs_Action/EMAIL_20260224_222442_19c90adc.md",
+    "Needs_Action/EMAIL_20260224_222708_19c8e2d1.md",
+    "Needs_Action/EMAIL_TEST_20260225_035708_test1234.md",
+    "Plans/PLAN_20260225_035721_test1234.md",
+    "Needs_Action/EMAIL_TEST_20260225_035306_test1234.md",
+    "Needs_Action/EMAIL_TEST_20260225_035306_test1234.md.tmp.12246.1771973877298",
+    "Dashboard.md.tmp.12246.1771973871425",
+    "Dashboard.md.tmp.12246.1771973871283",
+    "Dashboard.md.tmp.12246.1771973861113",
+    "Dashboard.md.tmp.12246.1771973860890",
+    "Dashboard.md.tmp.12246.1771973853496",
+    "Plans/PLAN_20260225_035721_test1234.md.tmp.12246.1771973848012",
+    "Needs_Action/EMAIL_20260225_035704_19c90788.md",
+    "Needs_Action/EMAIL_20260225_035704_19c90789.md",
+    "Needs_Action/EMAIL_20260225_035703_19c90793.md",
+    "Needs_Action/EMAIL_20260225_035702_19c90a6d.md",
+    "Needs_Action/EMAIL_20260225_035702_19c90a86.md",
+    "Needs_Action/EMAIL_20260225_035702_19c90adc.md",
+    "Needs_Action/EMAIL_20260225_035701_19c90b16.md",
+    "Needs_Action/EMAIL_20260225_035700_19c90d92.md",
+    "Needs_Action/EMAIL_20260225_035701_19c9146a.md",
+    "Needs_Action/EMAIL_20260225_035701_19c91cc5.md",
+    "Plans/PLAN_20260224_222708_19c8e2d1.md",
+    "Plans/PLAN_20260224_222809_19c90b16.md",
+    "Company_Handbook.md",
+    "Logs/orchestrator.log",
+    "orchestrator.py",
+    "orchestrator.py.tmp.4090.1771973221933"
+  ]
+}
