@@ -151,6 +151,9 @@ pip3 install google-auth google-auth-oauthlib google-auth-httplib2 \
 
 ## 6. IMPORTANT RULES
 
+### Memory Rule
+**MEMORY RULE: Before any conversation compaction or context reset, always save current progress to memory.md. Always read memory.md at the start of each new session.**
+
 ### Security Rules
 - NEVER store credentials in vault (use .env or environment variables)
 - NEVER commit credentials.json, token.pickle, or session files
