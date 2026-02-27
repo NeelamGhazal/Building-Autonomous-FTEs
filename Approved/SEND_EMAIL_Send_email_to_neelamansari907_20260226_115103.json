@@ -1,0 +1,31 @@
+{
+  "request_id": "89c0f83d-c925-4782-9fca-0c37e848ad66",
+  "action_type": "SEND_EMAIL",
+  "description": "Send email to neelamansari907@gmail.com: Test - HITL System Working!",
+  "details": {
+    "recipient": "neelamansari907@gmail.com",
+    "subject": "Test - HITL System Working!",
+    "body_preview": "This email was sent by AI Employee after your approval. HITL system is working perfectly!",
+    "cc": null,
+    "platform": "gmail",
+    "is_reply": false,
+    "original_message_id": null,
+    "is_html": false
+  },
+  "who_is_affected": "neelamansari907@gmail.com",
+  "amount_if_payment": null,
+  "created_at": "2026-02-26T11:51:03.088885Z",
+  "expires_at": "2026-02-27T11:51:03.088885Z",
+  "status": "EXECUTED",
+  "how_to_approve": "Move this file to /mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault/Approved/ folder",
+  "how_to_reject": "Move this file to /mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault/Rejected/ folder",
+  "callback_data": {
+    "to": "neelamansari907@gmail.com",
+    "subject": "Test - HITL System Working!",
+    "body": "This email was sent by AI Employee after your approval. HITL system is working perfectly!",
+    "cc": null,
+    "reply_to_message_id": null,
+    "is_html": false
+  },
+  "processed_at": "2026-02-26T11:53:58.664115Z"
+}

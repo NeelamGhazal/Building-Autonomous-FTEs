@@ -8,7 +8,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 
-VAULT_PATH = Path("/mnt/e/Hackathon-0/AI_Employee_Vault/AI_Employee_Vault")
+VAULT_PATH = Path("/mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault")
 CREDENTIALS_FILE = VAULT_PATH / "credentials.json"
 TOKEN_FILE = VAULT_PATH / "token.pickle"
 NEEDS_ACTION = VAULT_PATH / "Needs_Action"

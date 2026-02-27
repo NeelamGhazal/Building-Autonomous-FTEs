@@ -1,0 +1,34 @@
+{
+  "request_id": "40d43f70-53fb-425c-b575-63515aec13b2",
+  "action_type": "SOCIAL_MEDIA_POST",
+  "description": "LinkedIn text post: AI automation in business...",
+  "details": {
+    "platform": "linkedin",
+    "post_type": "text",
+    "content": "\ud83d\udca1 AI automation in business: A Different Perspective\n\nAfter years in this industry, here's what I've realized...\n\nThe key insight that changed everything for me was understanding that success isn't just about what you do\u2014it's about why you do it.\n\nWhat insights have shaped your journey?\n\n\n\n#business #leadership #growth",
+    "content_preview": "\ud83d\udca1 AI automation in business: A Different Perspective\n\nAfter years in this industry, here's what I've realized...\n\nThe key insight that changed everything for me was understanding that success isn't ju...",
+    "hashtags": [
+      "#business",
+      "#leadership",
+      "#growth"
+    ],
+    "visibility": "PUBLIC",
+    "article_url": null,
+    "article_title": null,
+    "ai_generated": false,
+    "topic": "AI automation in business"
+  },
+  "who_is_affected": "LinkedIn followers/connections",
+  "amount_if_payment": null,
+  "created_at": "2026-02-26T12:06:14.104889Z",
+  "expires_at": "2026-02-27T12:06:14.104889Z",
+  "status": "PENDING",
+  "how_to_approve": "Move this file to /mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault/Approved/ folder",
+  "how_to_reject": "Move this file to /mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault/Rejected/ folder",
+  "callback_data": {
+    "content": "\ud83d\udca1 AI automation in business: A Different Perspective\n\nAfter years in this industry, here's what I've realized...\n\nThe key insight that changed everything for me was understanding that success isn't just about what you do\u2014it's about why you do it.\n\nWhat insights have shaped your journey?\n\n\n\n#business #leadership #growth",
+    "visibility": "PUBLIC",
+    "article_url": null,
+    "article_title": null
+  }
+}

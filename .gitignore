@@ -2,6 +2,9 @@
 credentials.json
 token.pickle
 *.pickle
+linkedin_credentials.json
+linkedin_token.json
+whatsapp_session/
 
 # Logs
 Logs/

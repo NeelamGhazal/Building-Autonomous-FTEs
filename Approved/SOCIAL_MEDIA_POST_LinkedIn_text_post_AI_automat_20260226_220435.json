@@ -1,0 +1,36 @@
+{
+  "request_id": "523296ec-1fd6-458a-a635-1ff163240b56",
+  "action_type": "SOCIAL_MEDIA_POST",
+  "description": "LinkedIn text post: AI automation in business...",
+  "details": {
+    "platform": "linkedin",
+    "post_type": "text",
+    "content": "\ud83d\ude80 Thoughts on AI automation in business\n\nIn today's fast-paced business environment, staying ahead means constantly evolving.\n\nHere's what I've learned:\n\n1\ufe0f\u20e3 Embrace change as opportunity\n2\ufe0f\u20e3 Focus on delivering value\n3\ufe0f\u20e3 Build genuine connections\n\nWhat's your take on this? I'd love to hear your perspective in the comments!\n\n\n\n#business #leadership #growth",
+    "content_preview": "\ud83d\ude80 Thoughts on AI automation in business\n\nIn today's fast-paced business environment, staying ahead means constantly evolving.\n\nHere's what I've learned:\n\n1\ufe0f\u20e3 Embrace change as opportunity\n2\ufe0f\u20e3 Focus on...",
+    "hashtags": [
+      "#business",
+      "#leadership",
+      "#growth"
+    ],
+    "visibility": "PUBLIC",
+    "article_url": null,
+    "article_title": null,
+    "ai_generated": false,
+    "topic": "AI automation in business"
+  },
+  "who_is_affected": "LinkedIn followers/connections",
+  "amount_if_payment": null,
+  "created_at": "2026-02-26T22:04:35.387320Z",
+  "expires_at": "2026-02-27T22:04:35.387320Z",
+  "status": "EXECUTED",
+  "how_to_approve": "Move this file to /mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault/Approved/ folder",
+  "how_to_reject": "Move this file to /mnt/e/Hackathon-0/Bronze-Tier/AI_Employee_Vault/Rejected/ folder",
+  "callback_data": {
+    "content": "\ud83d\ude80 Thoughts on AI automation in business\n\nIn today's fast-paced business environment, staying ahead means constantly evolving.\n\nHere's what I've learned:\n\n1\ufe0f\u20e3 Embrace change as opportunity\n2\ufe0f\u20e3 Focus on delivering value\n3\ufe0f\u20e3 Build genuine connections\n\nWhat's your take on this? I'd love to hear your perspective in the comments!\n\n\n\n#business #leadership #growth",
+    "visibility": "PUBLIC",
+    "article_url": null,
+    "article_title": null
+  },
+  "executed_at": "2026-02-26T22:04:39.520488Z",
+  "post_id": "mock_urn:li:share:b8fce417b895"
+}
