@@ -2,7 +2,7 @@
 
 ## Overview
 
-MCP server for integrating with Odoo ERP via JSON-RPC API. Enables the AI Employee to manage invoices, contacts, products, and accounting operations with HITL approval for financial transactions.
+MCP server for integrating with Odoo ERP via JSON-RPC API. Enables the AI Employee to manage invoices, contacts, and accounting operations with HITL approval for financial transactions.
 
 ## Architecture
 
@@ -19,28 +19,49 @@ MCP server for integrating with Odoo ERP via JSON-RPC API. Enables the AI Employ
 │                                  ▼                                      │
 │                         ┌────────────────┐                              │
 │                         │  HITL Approval │                              │
-│                         │  (if payment   │                              │
-│                         │   > $50)       │                              │
+│                         │  (for write    │                              │
+│                         │   operations)  │                              │
 │                         └────────────────┘                              │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
+## JSON-RPC API
+
+### Endpoints
+
+| Endpoint | Purpose |
+|----------|---------|
+| `/web/session/authenticate` | Login and get session |
+| `/web/dataset/call_kw` | Call model methods |
+| `/web/webclient/version_info` | Get Odoo version |
+
+### Request Format
+
+```json
+{
+    "jsonrpc": "2.0",
+    "method": "call",
+    "params": {
+        "model": "res.partner",
+        "method": "search_read",
+        "args": [[]],
+        "kwargs": {"fields": ["name", "email"]}
+    },
+    "id": null
+}
+```
+
 ## Features
 
 ### Read Operations (No Approval Required)
-- List contacts/partners
+- List customers/partners
 - Get invoices and their status
-- View products and inventory
-- Read accounting entries
-- Generate reports
+- Financial summary (paid/unpaid totals)
 
 ### Write Operations (HITL Required)
-- Create/update invoices
-- Create/update contacts
-- Record payments (> $50)
-- Create journal entries
-- Update product prices
+- Create invoices
+- Create customers
 
 ## Configuration
 
@@ -59,144 +80,146 @@ ODOO_PASSWORD=admin
 # Odoo running on Docker
 ODOO_URL=http://localhost:8069
 ODOO_DB=odoo
-ODOO_USER=odoo
-ODOO_PASSWORD=odoo123
+ODOO_USER=admin
+ODOO_PASSWORD=admin
 ```
 
 ## MCP Tools
 
-### 1. odoo_list_contacts
+### 1. get_customers
 
-List all contacts/partners.
-
-```python
-{
-    "name": "odoo_list_contacts",
-    "description": "List contacts from Odoo",
-    "parameters": {
-        "limit": {"type": "integer", "default": 100},
-        "domain": {"type": "array", "description": "Odoo domain filter"}
-    }
-}
-```
-
-### 2. odoo_get_invoices
-
-Get invoices with optional filters.
+List all customers/partners.
 
 ```python
 {
-    "name": "odoo_get_invoices",
-    "description": "Get invoices from Odoo",
+    "name": "get_customers",
+    "description": "List customers from Odoo",
     "parameters": {
-        "state": {"type": "string", "enum": ["draft", "posted", "cancel"]},
-        "partner_id": {"type": "integer"},
-        "limit": {"type": "integer", "default": 50}
-    }
-}
-```
-
-### 3. odoo_create_invoice
-
-Create a new invoice (requires HITL approval).
-
-```python
-{
-    "name": "odoo_create_invoice",
-    "description": "Create invoice in Odoo",
-    "parameters": {
-        "partner_id": {"type": "integer", "required": true},
-        "invoice_lines": {"type": "array", "required": true},
-        "invoice_date": {"type": "string", "format": "date"}
-    }
-}
-```
-
-### 4. odoo_record_payment
-
-Record a payment (requires HITL approval if > $50).
-
-```python
-{
-    "name": "odoo_record_payment",
-    "description": "Record payment for invoice",
-    "parameters": {
-        "invoice_id": {"type": "integer", "required": true},
-        "amount": {"type": "number", "required": true},
-        "payment_date": {"type": "string", "format": "date"}
-    }
-}
-```
-
-### 5. odoo_get_products
-
-Get products/services list.
-
-```python
-{
-    "name": "odoo_get_products",
-    "description": "List products from Odoo",
-    "parameters": {
-        "type": {"type": "string", "enum": ["product", "service", "consu"]},
         "limit": {"type": "integer", "default": 100}
     }
 }
 ```
 
-### 6. odoo_create_contact
+**Returns:**
+```json
+[
+    {"id": 10, "name": "Acme Corp", "email": "acme@example.com", "phone": "555-1234"},
+    {"id": 14, "name": "Azure Interior", "email": "azure@example.com", "phone": "555-5678"}
+]
+```
 
-Create a new contact (requires HITL approval).
+### 2. create_customer
+
+Create a new customer (requires HITL approval).
 
 ```python
 {
-    "name": "odoo_create_contact",
-    "description": "Create contact in Odoo",
+    "name": "create_customer",
+    "description": "Create customer in Odoo",
     "parameters": {
         "name": {"type": "string", "required": true},
         "email": {"type": "string"},
         "phone": {"type": "string"},
-        "is_company": {"type": "boolean", "default": false}
+        "is_company": {"type": "boolean", "default": true}
     }
 }
 ```
 
-## Usage
+### 3. get_invoices
 
-### CLI Commands
+Get invoices with optional filters.
+
+```python
+{
+    "name": "get_invoices",
+    "description": "Get invoices from Odoo",
+    "parameters": {
+        "limit": {"type": "integer", "default": 50},
+        "state": {"type": "string", "enum": ["draft", "posted", "cancel"]},
+        "customer_id": {"type": "integer"}
+    }
+}
+```
+
+**Returns:**
+```json
+[
+    {
+        "id": 1,
+        "name": "INV/2026/00001",
+        "partner_name": "Acme Corp",
+        "amount_total": 1500.00,
+        "amount_residual": 1500.00,
+        "state": "posted"
+    }
+]
+```
+
+### 4. create_invoice
+
+Create a new invoice (requires HITL approval).
+
+```python
+{
+    "name": "create_invoice",
+    "description": "Create invoice in Odoo",
+    "parameters": {
+        "customer_id": {"type": "integer", "required": true},
+        "lines": {
+            "type": "array",
+            "items": {
+                "name": {"type": "string"},
+                "quantity": {"type": "number"},
+                "price_unit": {"type": "number"}
+            }
+        },
+        "invoice_date": {"type": "string", "format": "date"}
+    }
+}
+```
+
+### 5. get_financial_summary
+
+Get financial overview with totals.
+
+```python
+{
+    "name": "get_financial_summary",
+    "description": "Get financial summary from Odoo",
+    "parameters": {}
+}
+```
+
+**Returns:**
+```json
+{
+    "total_invoiced": 143175.00,
+    "total_paid": 0.00,
+    "total_unpaid": 143175.00,
+    "invoice_count": 4,
+    "paid_count": 0,
+    "unpaid_count": 4,
+    "collection_rate": 0.0
+}
+```
+
+## CLI Commands
 
 ```bash
 # Test connection
 python3 odoo_mcp_server.py --test
 
-# List contacts
-python3 odoo_mcp_server.py --list-contacts
+# List customers
+python3 odoo_mcp_server.py --get-customers
 
 # List invoices
-python3 odoo_mcp_server.py --list-invoices
+python3 odoo_mcp_server.py --get-invoices
 
-# Get unpaid invoices
-python3 odoo_mcp_server.py --unpaid
+# Financial summary
+python3 odoo_mcp_server.py --financial-summary
 
-# Run as MCP server
-python3 odoo_mcp_server.py --serve
-```
-
-### From Claude Code
-
-```python
-# List contacts
-result = await mcp.call_tool("odoo_list_contacts", {"limit": 10})
-
-# Get unpaid invoices
-result = await mcp.call_tool("odoo_get_invoices", {"state": "posted"})
-
-# Create invoice (triggers HITL)
-result = await mcp.call_tool("odoo_create_invoice", {
-    "partner_id": 1,
-    "invoice_lines": [
-        {"product_id": 1, "quantity": 1, "price_unit": 100.00}
-    ]
-})
+# Create customer (demo)
+python3 odoo_mcp_server.py --create-customer "Test Company"
 ```
 
 ## HITL Integration
@@ -206,9 +229,7 @@ result = await mcp.call_tool("odoo_create_invoice", {
 | Action | Condition | Approval Type |
 |--------|-----------|---------------|
 | Create Invoice | Always | Standard |
-| Record Payment | Amount > $50 | Financial |
-| Create Contact | Always | Standard |
-| Update Prices | Always | Financial |
+| Create Customer | Always | Standard |
 
 ### Approval File Format
 
@@ -217,12 +238,13 @@ result = await mcp.call_tool("odoo_create_invoice", {
     "type": "ODOO_OPERATION",
     "operation": "create_invoice",
     "data": {
-        "partner_id": 1,
-        "total": 500.00,
-        "lines": [...]
+        "customer_id": 1,
+        "lines": [
+            {"name": "Service", "quantity": 1, "price_unit": 100.00}
+        ]
     },
     "requires_approval": true,
-    "created_at": "2024-01-15T10:30:00Z"
+    "created_at": "2026-02-28T10:30:00Z"
 }
 ```
 
@@ -230,62 +252,66 @@ result = await mcp.call_tool("odoo_create_invoice", {
 
 ### Connection Errors
 - Automatic retry with exponential backoff
-- Queue operations when Odoo is down
-- Alert after 5 failed attempts
+- Logs errors to `/Logs/odoo_mcp.log`
 
 ### Authentication Errors
-- Alert human for credential refresh
-- Pause all Odoo operations
-
-### Data Validation
-- Validate invoice totals before submission
-- Check partner existence before operations
+- Re-authenticates on session expiry
+- Logs authentication failures
 
 ## Security
 
-1. **Credentials**: Never stored in vault (use environment variables)
-2. **HITL**: All financial operations require approval
-3. **Logging**: All operations logged to audit trail
-4. **Limits**: Payment limits enforced ($50 default)
+1. **Credentials**: Use environment variables (never hardcode)
+2. **HITL**: All write operations require approval
+3. **Logging**: All operations logged
+4. **Session**: Session cookies handled automatically
 
 ## File Structure
 
 ```
 AI_Employee_Vault/
-├── odoo_mcp_server.py        # MCP server implementation
+├── odoo_mcp_server.py        # MCP server implementation (JSON-RPC)
 └── .claude/
     └── skills/
         └── odoo_mcp/
             └── SKILL.md      # This file
 ```
 
-## Odoo Modules Required
+## Odoo Requirements
 
-For full functionality, install these Odoo modules:
-- `account` - Accounting
+For full functionality, Odoo needs these modules:
+- `base` - Base system (required)
+- `account` - Accounting/Invoicing
 - `contacts` - Contact management
-- `sale` - Sales
-- `purchase` - Purchasing (optional)
-- `stock` - Inventory (optional)
 
 ## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| Connection refused | Check Docker is running |
-| Authentication failed | Verify credentials in .env |
+| Connection refused | Check Docker is running: `docker ps` |
+| Authentication failed | Verify admin credentials |
+| "Database not found" | Run `docker exec odoo-odoo-1 odoo -i base -d odoo --stop-after-init` |
 | Module not found | Install required Odoo module |
-| Permission denied | Check user has admin rights |
 
-## Demo Commands
+## Demo Results (2026-02-28)
 
-```bash
-# Full demo flow
-python3 odoo_mcp_server.py --demo
-
-# Test specific operation
-python3 odoo_mcp_server.py --test-create-contact "Test Company"
-
-# Check Odoo health
-python3 odoo_mcp_server.py --health
 ```
+Connection Test: PASSED
+- Version: 17.0-20260217
+- User ID: 2
+
+Customers: 2 found
+- Acme Corporation
+- Azure Interior
+
+Invoices: 4 found
+- Total: $143,175.00
+- Unpaid: $143,175.00
+
+Financial Summary:
+- Collection Rate: 0%
+```
+
+---
+
+*Last Updated: 2026-02-28*
+*JSON-RPC Implementation Complete*
